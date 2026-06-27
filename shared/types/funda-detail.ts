@@ -21,7 +21,7 @@ export interface DetailInfo {
   Tagline: string | null
 }
 
-export interface ListingDetail {
+export interface FundaListingDetail {
   AangebodenSinds: string
   AangebodenSindsTekst: string
   AantalBadkamers: number

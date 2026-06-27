@@ -20,7 +20,7 @@ export interface ListingsResponse {
   paging: Paging
 }
 
-export type ListingDetailApiResponse = Pick<
+export type ListingDetailResponse = Pick<
   ListingDetail,
   | 'Id'
   | 'Adres'
