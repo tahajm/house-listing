@@ -1,1 +1,31 @@
 @import 'tailwindcss';
+
+@layer base {
+  a {
+    color: var(--color-secondary-70);
+  }
+  a:hover {
+    color: var(--color-secondary-70-darken-1);
+  }
+  a:visited {
+    color: var(--color-purple-80);
+  }
+}
+
+@theme {
+  --color-primary-10: #f8f0e6;
+  --color-primary-50: #ff9b21;
+  --color-primary-50-darken-1: #ff910a;
+  --color-primary-50-darken-2: #f58700;
+  --color-secondary-10: #e5f6ff;
+  --color-secondary-40: #4dbeff;
+  --color-secondary-70: #0071b3;
+  --color-secondary-90: #004166;
+  --color-secondary-10-darken-1: #d1efff;
+  --color-secondary-10-darken-2: #bde8ff;
+  --color-secondary-40-darken-1: #38b6ff;
+  --color-secondary-40-darken-2: #24afff;
+  --color-secondary-70-darken-1: #00649e;
+  --color-secondary-70-darken-2: #00578a;
+  --color-purple-80: #6200b3;
+}
