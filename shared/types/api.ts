@@ -12,12 +12,17 @@ export type ListingCard = Pick<
   | 'Koopprijs'
   | 'AantalKamers'
   | 'Woonoppervlakte'
+  | 'Perceeloppervlakte'
   | 'Foto'
+  | 'FotoMedium'
+  | 'FotoLarge'
+  | 'FotoLargest'
 >
 
 export interface ListingsResponse {
   listings: ListingCard[]
   paging: Paging
+  total: number
 }
 
 export type ListingDetailResponse = Pick<
@@ -30,7 +35,8 @@ export type ListingDetailResponse = Pick<
   | 'AantalKamers'
   | 'AantalSlaapkamers'
   | 'AantalBadkamers'
-  | 'Woonoppervlakte'
+  | 'WoonOppervlakte'
+  | 'PerceelOppervlakte'
   | 'Inhoud'
   | 'Bouwjaar'
   | 'Energielabel'

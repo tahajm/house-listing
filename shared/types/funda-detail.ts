@@ -21,7 +21,7 @@ export interface DetailInfo {
   Tagline: string | null
 }
 
-export interface FundaListingDetail {
+export interface ListingDetail {
   AangebodenSinds: string
   AangebodenSindsTekst: string
   AantalBadkamers: number
@@ -87,6 +87,7 @@ export interface FundaListingDetail {
   Postcode: string
   WGS84_X: number
   WGS84_Y: number
-  Woonoppervlakte: number
+  PerceelOppervlakte: number
+  WoonOppervlakte: number
   Woonplaats: string
 }
