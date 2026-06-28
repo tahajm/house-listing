@@ -29,7 +29,7 @@ export type ListingDetailResponse = Pick<
   ListingDetail,
   | 'Id'
   | 'Adres'
-  | 'Woonplaats'
+  | 'Plaats'
   | 'Postcode'
   | 'Koopprijs'
   | 'AantalKamers'
@@ -40,6 +40,7 @@ export type ListingDetailResponse = Pick<
   | 'Inhoud'
   | 'Bouwjaar'
   | 'Energielabel'
+  | 'VolledigeOmschrijving'
   | 'WGS84_X'
   | 'WGS84_Y'
   | 'HoofdFoto'

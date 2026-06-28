@@ -85,9 +85,10 @@ export interface ListingDetail {
   Media: Media[]
   Koopprijs: number | null
   Postcode: string
+  VolledigeOmschrijving: string | null
   WGS84_X: number
   WGS84_Y: number
   PerceelOppervlakte: number
   WoonOppervlakte: number
-  Woonplaats: string
+  Plaats: string
 }

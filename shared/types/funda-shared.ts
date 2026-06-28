@@ -12,6 +12,13 @@ export interface Price {
   VeilingText: string
 }
 
+export enum MediaCategory {
+  Small = 1,
+  Medium = 4,
+  Large = 6,
+  Largest = 7,
+}
+
 export interface MediaItem {
   Category: number
   Height: number
