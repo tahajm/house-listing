@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import IconEnergyLabel from '~/components/icon/EnergyLabel.vue'
-import IconLivingArea from '~/components/icon/LivingArea.vue'
-import IconPlotSize from '~/components/icon/PlotSize.vue'
-import IconRooms from '~/components/icon/Rooms.vue'
+import EnergyLabelIcon from '~/components/icons/EnergyLabelIcon.vue'
+import LivingAreaIcon from '~/components/icons/LivingAreaIcon.vue'
+import PlotSizeIcon from '~/components/icons/PlotSizeIcon.vue'
+import RoomsIcon from '~/components/icons/RoomsIcon.vue'
 
 type Props = {
   variant?: 'normal' | 'extended'
@@ -17,19 +17,19 @@ withDefaults(defineProps<Props>(), { variant: 'normal' })
 <template>
   <ul class="overview">
     <li class="overview__item">
-      <IconPlotSize /> <span class="overview__value">{{ woonoppervlakte }} m²</span>
+      <PlotSizeIcon /> <span class="overview__value">{{ woonoppervlakte }} m²</span>
       <span v-if="variant === 'extended'">living area</span>
     </li>
     <li class="overview__item">
-      <IconLivingArea /> <span class="overview__value">{{ perceeloppervlakte }} m²</span>
+      <LivingAreaIcon /> <span class="overview__value">{{ perceeloppervlakte }} m²</span>
       <span v-if="variant === 'extended'">plot size</span>
     </li>
     <li class="overview__item">
-      <IconRooms /> <span class="overview__value">{{ aantalkamers }}</span>
+      <RoomsIcon /> <span class="overview__value">{{ aantalkamers }}</span>
       <span v-if="variant === 'extended'">bedrooms</span>
     </li>
     <li v-if="energielabel" class="overview__item">
-      <IconEnergyLabel /> <span class="overview__value">{{ energielabel }}</span>
+      <EnergyLabelIcon /> <span class="overview__value">{{ energielabel }}</span>
       <span v-if="variant === 'extended'">energy label</span>
     </li>
   </ul>
