@@ -6,7 +6,9 @@ const DEFAULT_BASE_URL = 'https://partnerapi.funda.nl/feeds/Aanbod.svc/json'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/image'],
+  modules: ['@nuxt/image'],
+
+  components: false,
 
   css: ['~/assets/css/main.css'],
   vite: {
@@ -24,12 +26,6 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'description', content: 'Browse house listings for sale on Funda.' }],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    },
-  },
-
-  eslint: {
-    config: {
-      stylistic: false,
     },
   },
 
