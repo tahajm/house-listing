@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import IconEnergyLabel from '~/components/icon/EnergyLabel.vue'
+import IconLivingArea from '~/components/icon/LivingArea.vue'
+import IconPlotSize from '~/components/icon/PlotSize.vue'
+import IconRooms from '~/components/icon/Rooms.vue'
+
 type Props = {
   variant?: 'normal' | 'extended'
   woonoppervlakte: number
