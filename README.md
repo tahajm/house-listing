@@ -1,75 +1,78 @@
-# Nuxt Minimal Starter
+# House Listing
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Two-page Nuxt 4 app consuming a real-estate Partner API. Server-side proxy keeps the API key off the client.
+
+- `/` — paginated list of properties for sale
+- `/detail/[id]` — single listing with photo gallery and map
+
+## Stack
+
+- **Nuxt 4** — SSR, hybrid rendering, server routes
+- **Tailwind CSS v4** — via `@tailwindcss/vite`
+- **`@nuxt/image`** — `<NuxtImg>` for remote photos
+- **ESLint (flat) + Prettier** — correctness via ESLint, formatting via Prettier
+- **Vitest + `@nuxt/test-utils`** — component, composable and util tests
+
+## Prerequisites
+
+- Node `>=20`
+- pnpm `>=10`
+- Partner API key
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+cp .env.example .env
+# edit .env, set NUXT_API_KEY
 ```
 
-## Development Server
+### Environment
 
-Start the development server on `http://localhost:3000`:
+| Var             | Required | Default           |
+| --------------- | -------- | ----------------- |
+| `NUXT_BASE_URL` | no       | upstream API base |
+| `NUXT_API_KEY`  | **yes**  | —                 |
+
+Both are server-only via `runtimeConfig`. The key never reaches the browser.
+
+## Scripts
 
 ```bash
-# npm
-npm run dev
+pnpm dev            # start dev server on http://localhost:3000
+pnpm build          # production build
+pnpm preview        # preview production build locally
+pnpm generate       # static site generation
 
-# pnpm
-pnpm dev
+pnpm lint           # eslint
+pnpm lint:fix       # eslint --fix
+pnpm format         # prettier --write
+pnpm format:check   # prettier --check
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm test           # vitest run
+pnpm test:watch     # vitest watch mode
 ```
 
-## Production
+## Project structure
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
+app/
+├─ app.vue
+├─ layouts/default.vue
+├─ pages/
+│  ├─ index.vue              # /
+│  └─ detail/[id].vue        # /detail/:id
+├─ components/               # auto-imported (icons/, common/, ...)
+├─ composables/              # auto-imported
+├─ assets/css/main.css       # Tailwind entry + theme tokens
+└─ utils/                    # auto-imported helpers
 
-Locally preview production build:
+server/
+├─ api/
+│  ├─ listings.get.ts        # GET /api/listings
+│  └─ listingDetail/[id].get.ts  # GET /api/listingDetail/:id
+└─ utils/transformers.ts     # upstream → client shape
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+shared/types/                # types shared between app and server
+test/                        # Vitest specs (components, composables, utils)
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
