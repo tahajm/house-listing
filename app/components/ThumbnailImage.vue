@@ -5,20 +5,21 @@ type Props = {
   heroImage: Required<Thumbnail>
   images?: Thumbnail[]
   address: string
+  eager?: boolean
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), { eager: false })
 </script>
 
 <template>
   <div class="@container">
-    <section class="thumbnail">
+    <section class="thumbnail" :class="images?.length ? 'grid-rows-2' : 'grid-rows-1'">
       <div class="thumbnail__hero">
         <NuxtImg
           :src="heroImage.large"
           :alt="`Hero photo of ${address}`"
           class="size-full object-cover"
-          loading="eager"
+          :loading="eager ? 'eager' : 'lazy'"
         />
       </div>
 
@@ -40,7 +41,7 @@ defineProps<Props>()
 @reference "tailwindcss";
 
 .thumbnail {
-  @apply grid grid-cols-2 grid-rows-2 gap-1 rounded-lg overflow-hidden max-h-72;
+  @apply grid grid-cols-2 gap-1 rounded-lg overflow-hidden max-h-72;
   @apply @md:grid-cols-3 @md:max-h-112 @5xl:grid-cols-4;
 }
 

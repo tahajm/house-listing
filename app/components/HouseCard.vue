@@ -4,45 +4,37 @@ import PriceTag from '~/components/PriceTag.vue'
 import ThumbnailImage from '~/components/ThumbnailImage.vue'
 import type { ListingCard } from '~~/shared/types/api'
 
-const props = defineProps<{ house: ListingCard }>()
+type Props = { house: ListingCard; eager?: boolean }
 
-const promoImages = computed(() => {
-  if (!props.house.PromoLabel) return []
-
-  const results = props.house.PromoLabel.PromotionPhotos.slice(0, 2).map((image) => ({
-    small: image,
-  }))
-
-  return results
+const props = withDefaults(defineProps<Props>(), {
+  eager: false,
 })
+
+const promoImages = computed(() => getPromoImages(props.house.PromoLabel))
+const hasPromotion = computed(() => promoImages.value.length > 0)
+
+const heroImage = computed(() => ({
+  large: props.house.FotoLarge,
+  small: props.house.Foto,
+  medium: props.house.FotoMedium,
+  largest: props.house.FotoLargest,
+}))
 </script>
 
 <template>
   <li
-    class="flex gap-4 border-b pb-6 border-neutral-200"
-    :class="promoImages.length ? 'flex-col' : 'flex-row'"
+    class="flex flex-col border-b border-neutral-200"
+    :class="hasPromotion ? 'border rounded-md' : 'xs:flex-row pb-6'"
   >
-    <div v-if="promoImages.length > 0" class="w-full max-w-4xl">
+    <div class="max-w-4xl w-full" :class="hasPromotion ? '' : 'xs:w-58'">
       <ThumbnailImage
-        :hero-image="{
-          large: house.FotoLarge,
-          small: house.Foto,
-          medium: house.FotoMedium,
-          largest: house.FotoLargest,
-        }"
+        :hero-image="heroImage"
         :images="promoImages"
         :address="house.Adres"
+        :eager="eager"
       />
     </div>
-    <div v-else class="aspect-3/2 overflow-hidden rounded-md">
-      <NuxtImg
-        :src="house.FotoMedium"
-        :alt="house.Adres"
-        class="size-full object-cover"
-        loading="lazy"
-      />
-    </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 xs:p-4" :class="hasPromotion ? 'p-4' : ''">
       <h3>
         <NuxtLink :href="`/detail/${house.Id}`" class="block">
           <div class="font-semibold truncate">{{ house.Adres }}</div>
@@ -51,9 +43,9 @@ const promoImages = computed(() => {
       </h3>
       <PriceTag :price="house.Koopprijs" />
       <HouseOverview
-        :aantalkamers="house.AantalKamers"
-        :perceeloppervlakte="house.Perceeloppervlakte"
-        :woonoppervlakte="house.Woonoppervlakte"
+        :rooms="house.AantalKamers"
+        :plot-area="house.Perceeloppervlakte"
+        :living-area="house.Woonoppervlakte"
       />
     </div>
   </li>
