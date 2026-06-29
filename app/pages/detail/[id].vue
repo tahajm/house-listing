@@ -9,7 +9,7 @@ import { extractPhotos } from '~/utils/photos'
 const route = useRoute()
 const id = route.params.id
 
-const { data, pending, error } = useFetch(`/api/listingDetail/${id}`)
+const { data, pending, error } = await useFetch(`/api/listingDetail/${id}`)
 
 const photos = computed(() => extractPhotos(data.value?.Media))
 </script>

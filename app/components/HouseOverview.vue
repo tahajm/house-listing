@@ -46,7 +46,7 @@ const data: OverviewItem[] = [
 </script>
 
 <template>
-  <ul class="flex flex-nowrap gap-3 gap-y-2 py-1 text-neutral-600">
+  <ul class="flex flex-wrap gap-3 gap-y-2 py-1 text-neutral-600">
     <template v-for="houseInfo in data" :key="houseInfo.name">
       <li v-if="houseInfo.value !== undefined" class="flex items-center gap-1 whitespace-nowrap">
         <component :is="houseInfo.icon" />

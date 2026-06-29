@@ -35,12 +35,12 @@ const heroImage = computed(() => ({
       />
     </div>
     <div class="flex flex-col gap-2 xs:p-4" :class="{ 'p-4': hasPromotion }">
-      <h3>
+      <h2>
         <NuxtLink :href="`/detail/${house.Id}`" class="block">
           <div class="font-semibold truncate">{{ house.Adres }}</div>
           <div class="truncate text-gray-600">{{ house.Postcode }} {{ house.Woonplaats }}</div>
         </NuxtLink>
-      </h3>
+      </h2>
       <PriceTag :price="house.Koopprijs" />
       <HouseOverview
         :rooms="house.AantalKamers"
