@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+@utility container {
+  max-width: 80rem;
+  width: 100%;
+}
+
 @layer base {
   a {
     color: var(--color-secondary-70);
@@ -13,6 +18,7 @@
 }
 
 @theme {
+  --breakpoint-xs: 482px;
   --color-primary-10: #f8f0e6;
   --color-primary-50: #ff9b21;
   --color-primary-50-darken-1: #ff910a;
