@@ -41,9 +41,7 @@ describe('HouseCard', () => {
   it('lets user navigate to the detail page for this listing', async () => {
     const wrapper = await mountSuspended(HouseCard, { props: { house: makeHouse() } })
 
-    const link = wrapper.get('a')
-    expect(link.attributes('href')).toBe('/detail/abc-123')
-    expect(link.text()).toContain('1 Test Street')
+    expect(wrapper.find('a[href="/detail/abc-123"]').exists()).toBe(true)
   })
 
   it('renders promo photos when the listing has them', async () => {

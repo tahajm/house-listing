@@ -42,7 +42,7 @@ export interface RawListing {
   AangebodenSindsTekst: string
   AanmeldDatum: string
   AantalBeschikbaar: number | null
-  AantalKamers: number
+  AantalKamers: number | null
   AantalKavels: number | null
   Aanvaarding: string
   Adres: string
@@ -88,7 +88,7 @@ export interface RawListing {
   Note: string | null
   OpenHuis: unknown[]
   Oppervlakte: number
-  Perceeloppervlakte: number
+  Perceeloppervlakte: number | null
   Postcode: string
   Prijs: Price
   PrijsGeformatteerdHtml: string
@@ -114,7 +114,7 @@ export interface RawListing {
   WGS84_X: number
   WGS84_Y: number
   WoonOppervlakteTot: number
-  Woonoppervlakte: number
+  Woonoppervlakte: number | null
   Woonplaats: string
   ZoekType: number[]
 }
@@ -134,7 +134,7 @@ export interface RawListingsResponse {
 export interface Energielabel {
   Definitief: boolean
   Index: number | null
-  Label: string
+  Label: string | null
   NietBeschikbaar: boolean
   NietVerplicht: boolean
 }
@@ -155,8 +155,8 @@ export interface DetailInfo {
 export interface RawListingDetail {
   AangebodenSinds: string
   AangebodenSindsTekst: string
-  AantalBadkamers: number
-  AantalKamers: number
+  AantalBadkamers: number | null
+  AantalKamers: number | null
   AantalSlaapkamers: number | null
   AantalWoonlagen: string
   Aanvaarding: string
@@ -219,7 +219,7 @@ export interface RawListingDetail {
   VolledigeOmschrijving: string | null
   WGS84_X: number
   WGS84_Y: number
-  PerceelOppervlakte: number
-  WoonOppervlakte: number
+  PerceelOppervlakte: number | null
+  WoonOppervlakte: number | null
   Plaats: string
 }

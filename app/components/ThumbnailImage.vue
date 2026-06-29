@@ -15,12 +15,14 @@ withDefaults(defineProps<Props>(), { eager: false })
   <div class="@container">
     <section class="thumbnail">
       <div class="thumbnail__hero">
-        <NuxtImg
+        <img
           :src="heroImage.large"
+          :srcset="`${heroImage.medium} 600w, ${heroImage.large} 1080w, ${heroImage.largest} 1440w`"
+          sizes="(max-width: 670px) 100vw, (max-width: 900px) 67vw, 600px"
           :alt="`Hero photo of ${address}`"
           width="720"
           height="480"
-          class="size-full object-cover"
+          class="size-full object-cover hover-zoom"
           :loading="eager ? 'eager' : 'lazy'"
         />
       </div>
@@ -30,7 +32,7 @@ withDefaults(defineProps<Props>(), { eager: false })
           <NuxtImg
             :src="image"
             :alt="`Photo ${i + 1} of ${address}`"
-            class="size-full object-cover"
+            class="size-full object-cover hover-zoom"
             loading="lazy"
           />
         </div>
@@ -48,11 +50,11 @@ withDefaults(defineProps<Props>(), { eager: false })
 }
 
 .thumbnail__hero {
-  @apply col-span-2 aspect-[5/4] bg-neutral-200 @2xl:row-span-2;
+  @apply col-span-2 aspect-[5/4] bg-neutral-200 overflow-hidden @2xl:row-span-2;
 }
 
 .thumbnail__photo {
-  @apply aspect-[5/4] bg-neutral-200;
+  @apply aspect-[5/4] bg-neutral-200 overflow-hidden;
 }
 
 .thumbnail__photo:nth-child(n + 4) {

@@ -8,14 +8,14 @@ import RoomsIcon from '~/components/icons/RoomsIcon.vue'
 
 type Props = {
   variant?: 'normal' | 'extended'
-  livingArea: number
-  plotArea: number
-  rooms: number
-  energyLabel?: string
+  livingArea: number | null
+  plotArea: number | null
+  rooms: number | null
+  energyLabel?: string | null
 }
 type OverviewItem = {
   icon: Component
-  value: string | number | undefined
+  value: string | number | undefined | null
   name: string
 }
 
@@ -24,12 +24,12 @@ const props = withDefaults(defineProps<Props>(), { variant: 'normal' })
 const data: OverviewItem[] = [
   {
     icon: LivingAreaIcon,
-    value: `${props.livingArea} m²`,
+    value: props.livingArea == null ? null : `${props.livingArea} m²`,
     name: 'living area',
   },
   {
     icon: PlotSizeIcon,
-    value: `${props.plotArea} m²`,
+    value: props.plotArea == null ? null : `${props.plotArea} m²`,
     name: 'plot size',
   },
   {
@@ -48,7 +48,7 @@ const data: OverviewItem[] = [
 <template>
   <ul class="flex flex-wrap gap-3 gap-y-2 py-1 text-neutral-600">
     <template v-for="houseInfo in data" :key="houseInfo.name">
-      <li v-if="houseInfo.value !== undefined" class="flex items-center gap-1 whitespace-nowrap">
+      <li v-if="houseInfo.value" class="flex items-center gap-1 whitespace-nowrap">
         <component :is="houseInfo.icon" />
         <span class="text-neutral-900">{{ houseInfo.value }}</span>
         <span v-if="variant === 'extended'">{{ houseInfo.name }}</span>
