@@ -2,6 +2,7 @@
 import HouseOverview from '~/components/HouseOverview.vue'
 import PriceTag from '~/components/PriceTag.vue'
 import ThumbnailImage from '~/components/ThumbnailImage.vue'
+import { secureImageUrl } from '~/utils/configs'
 import type { ListingCard } from '~~/shared/types/api'
 
 type Props = { house: ListingCard; eager?: boolean }
@@ -14,10 +15,10 @@ const promoImages = computed(() => getPromoImages(props.house.PromoLabel))
 const hasPromotion = computed(() => promoImages.value.length > 0)
 
 const heroImage = computed(() => ({
-  large: props.house.FotoLarge,
-  small: props.house.Foto,
-  medium: props.house.FotoMedium,
-  largest: props.house.FotoLargest,
+  large: secureImageUrl(props.house.FotoLarge),
+  small: secureImageUrl(props.house.Foto),
+  medium: secureImageUrl(props.house.FotoMedium),
+  largest: secureImageUrl(props.house.FotoLargest),
 }))
 </script>
 

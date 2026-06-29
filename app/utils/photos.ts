@@ -1,9 +1,11 @@
+import { secureImageUrl } from '~/utils/configs'
 import { type Media, MediaKind, PhotoSize, type Thumbnail } from '~~/shared/types/funda-shared'
 
 const PHOTO_LIMIT = 5
 
 function getUrl(media: Media, size: PhotoSize) {
-  return media.MediaItems.find((i) => i.Category === size)!.Url
+  const url = media.MediaItems.find((i) => i.Category === size)?.Url
+  return secureImageUrl(url)
 }
 
 function toPhoto(media: Media): Required<Thumbnail> {
