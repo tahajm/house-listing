@@ -13,11 +13,13 @@ withDefaults(defineProps<Props>(), { eager: false })
 
 <template>
   <div class="@container">
-    <section class="thumbnail" :class="images?.length ? 'grid-rows-2' : 'grid-rows-1'">
+    <section class="thumbnail">
       <div class="thumbnail__hero">
         <NuxtImg
           :src="heroImage.large"
           :alt="`Hero photo of ${address}`"
+          width="720"
+          height="480"
           class="size-full object-cover"
           :loading="eager ? 'eager' : 'lazy'"
         />
@@ -41,12 +43,16 @@ withDefaults(defineProps<Props>(), { eager: false })
 @reference "tailwindcss";
 
 .thumbnail {
-  @apply grid grid-cols-2 gap-1 rounded-lg overflow-hidden max-h-72;
-  @apply @md:grid-cols-3 @md:max-h-112 @5xl:grid-cols-4;
+  @apply grid grid-cols-2 gap-1 rounded-lg overflow-hidden;
+  @apply @2xl:grid-cols-3 @2xl:grid-rows-2 @5xl:grid-cols-4;
 }
 
 .thumbnail__hero {
-  @apply col-span-2 row-span-1 @md:row-span-2;
+  @apply col-span-2 aspect-[5/4] bg-neutral-200 @2xl:row-span-2;
+}
+
+.thumbnail__photo {
+  @apply aspect-[5/4] bg-neutral-200;
 }
 
 .thumbnail__photo:nth-child(n + 4) {

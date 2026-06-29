@@ -4,9 +4,9 @@ import AppHeader from '~/components/common/AppHeader.vue'
 </script>
 
 <template>
-  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+  <div class="flex min-h-screen flex-col">
     <AppHeader />
-    <main class="container mx-auto p-4">
+    <main class="container mx-auto flex-1 p-4">
       <slot />
     </main>
     <AppFooter />
