@@ -1,9 +1,9 @@
-import type { Price, Paging, FeedMetadata } from './funda-shared'
+import type { FeedMetadata, Paging, Price } from './funda-shared'
 
 export interface PromoLabel {
   HasPromotionLabel: boolean
-  PromotionPhotos: unknown[]
-  PromotionPhotosSecure: null
+  PromotionPhotos: string[]
+  PromotionPhotosSecure: string[] | null
   PromotionType: number
   RibbonColor: number
   RibbonText: string | null

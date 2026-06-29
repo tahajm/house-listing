@@ -21,16 +21,13 @@ export default defineConfigWithVueTs(
   {
     files: ['app/**/*.vue'],
     rules: {
+      'vue/multi-word-component-names': 'off',
       'vue/require-default-prop': 'off',
       'vue/no-unused-refs': 'error',
       'vue/no-template-shadow': 'error',
       'vue/attribute-hyphenation': 'warn',
       'vue/attributes-order': 'warn',
     },
-  },
-  {
-    files: ['app/pages/**/*.vue'],
-    rules: { 'vue/multi-word-component-names': 'off' },
   },
   eslintConfigPrettier,
 )

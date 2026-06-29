@@ -1,4 +1,4 @@
-import type { Media, KenmerkCategorie } from './funda-shared'
+import type { KenmerkCategorie, Media } from './funda-shared'
 
 export interface Energielabel {
   Definitief: boolean

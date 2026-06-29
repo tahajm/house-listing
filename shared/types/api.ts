@@ -1,11 +1,10 @@
-import type { Listing } from './funda-listing'
 import type { ListingDetail } from './funda-detail'
+import type { Listing } from './funda-listing'
 import type { Paging } from './funda-shared'
 
 export type ListingCard = Pick<
   Listing,
   | 'Id'
-  | 'GlobalId'
   | 'Adres'
   | 'Woonplaats'
   | 'Postcode'
@@ -17,6 +16,7 @@ export type ListingCard = Pick<
   | 'FotoMedium'
   | 'FotoLarge'
   | 'FotoLargest'
+  | 'PromoLabel'
 >
 
 export interface ListingsResponse {
@@ -33,17 +33,12 @@ export type ListingDetailResponse = Pick<
   | 'Postcode'
   | 'Koopprijs'
   | 'AantalKamers'
-  | 'AantalSlaapkamers'
   | 'AantalBadkamers'
   | 'WoonOppervlakte'
   | 'PerceelOppervlakte'
-  | 'Inhoud'
-  | 'Bouwjaar'
   | 'Energielabel'
   | 'VolledigeOmschrijving'
   | 'WGS84_X'
   | 'WGS84_Y'
-  | 'HoofdFoto'
   | 'Media'
-  | 'Kenmerken'
 >

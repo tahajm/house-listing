@@ -12,11 +12,18 @@ export interface Price {
   VeilingText: string
 }
 
-export enum MediaCategory {
+export enum PhotoSize {
   Small = 1,
   Medium = 4,
   Large = 6,
   Largest = 7,
+}
+
+export enum MediaKind {
+  Photos = 1,
+  Brochure = 3,
+  VirtualTour = 4,
+  Floorplans = 5,
 }
 
 export interface MediaItem {
@@ -37,6 +44,13 @@ export interface Media {
   Omschrijving: string | null
   RegistratieVerplicht: boolean
   Soort: number
+}
+
+export type Thumbnail = {
+  small: string
+  medium?: string
+  large?: string
+  largest?: string
 }
 
 export interface Paging {

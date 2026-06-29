@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/image'],
 
-  components: false,
+  components: [{ path: '~/components', pathPrefix: false }],
 
   css: ['~/assets/css/main.css'],
   vite: {
