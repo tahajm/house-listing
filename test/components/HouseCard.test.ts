@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import HouseCard from '../../app/components/HouseCard.vue'
 import type { ListingCard } from '../../shared/types/api'
-import type { PromoLabel } from '../../shared/types/funda-listing'
+import type { PromoLabel } from '../../shared/types/upstream'
 
 function makeHouse(overrides: Partial<ListingCard> = {}): ListingCard {
   return {
@@ -15,10 +15,10 @@ function makeHouse(overrides: Partial<ListingCard> = {}): ListingCard {
     AantalKamers: 4,
     Woonoppervlakte: 120,
     Perceeloppervlakte: 80,
-    Foto: 'http://cloud.funda.nl/a-small.jpg',
-    FotoMedium: 'http://cloud.funda.nl/a-medium.jpg',
-    FotoLarge: 'http://cloud.funda.nl/a-large.jpg',
-    FotoLargest: 'http://cloud.funda.nl/a-largest.jpg',
+    Foto: 'http://cloud.example.com/a-small.jpg',
+    FotoMedium: 'http://cloud.example.com/a-medium.jpg',
+    FotoLarge: 'http://cloud.example.com/a-large.jpg',
+    FotoLargest: 'http://cloud.example.com/a-largest.jpg',
     PromoLabel: makePromoLabel(),
     MakelaarNaam: 'Test Makelaars',
     ...overrides,
@@ -49,8 +49,8 @@ describe('HouseCard', () => {
   it('renders promo photos when the listing has them', async () => {
     const house = makeHouse({
       PromoLabel: makePromoLabel([
-        'http://cloud.funda.nl/promo-1.jpg',
-        'http://cloud.funda.nl/promo-2.jpg',
+        'http://cloud.example.com/promo-1.jpg',
+        'http://cloud.example.com/promo-2.jpg',
       ]),
     })
     const wrapper = await mountSuspended(HouseCard, { props: { house } })

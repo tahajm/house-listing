@@ -13,7 +13,7 @@ function toListingCard({
   FotoLargest,
   PromoLabel,
   MakelaarNaam,
-}: Listing): ListingCard {
+}: RawListing): ListingCard {
   return {
     Id,
     Adres,
@@ -32,7 +32,7 @@ function toListingCard({
   }
 }
 
-export function transformListingsResponse(data: FundaListingsResponse): ListingsResponse {
+export function transformListingsResponse(data: RawListingsResponse): ListingsResponse {
   return {
     listings: data.Objects.map(toListingCard),
     paging: data.Paging,
@@ -40,7 +40,7 @@ export function transformListingsResponse(data: FundaListingsResponse): Listings
   }
 }
 
-export function transformDetailResponse(detail: ListingDetail): ListingDetailResponse {
+export function transformDetailResponse(detail: RawListingDetail): ListingDetail {
   return {
     Id: detail.Id,
     Adres: detail.Adres,

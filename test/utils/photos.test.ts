@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { extractPhotos } from '~/utils/photos'
-import { type Media, MediaKind, PhotoSize } from '~~/shared/types/funda-shared'
+import { type Media, MediaKind, PhotoSize } from '~~/shared/types/shared'
 
 function makeMedia(id: string, categorie: MediaKind, sizes: PhotoSize[] = []): Media {
   return {

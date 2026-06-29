@@ -1,5 +1,5 @@
 import type { ListingsResponse } from '~~/shared/types/api'
-import type { FundaListingsResponse } from '~~/shared/types/funda-listing'
+import type { RawListingsResponse } from '~~/shared/types/upstream'
 
 import { transformListingsResponse } from '../utils/transformers'
 
@@ -11,7 +11,7 @@ export default defineEventHandler(async (event): Promise<ListingsResponse> => {
   url.searchParams.set('type', 'koop')
   url.searchParams.set('page', String(query.page ?? '1'))
 
-  const data = await $fetch<FundaListingsResponse>(url.toString())
+  const data = await $fetch<RawListingsResponse>(url.toString())
 
   return transformListingsResponse(data)
 })

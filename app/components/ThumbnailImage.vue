@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Thumbnail } from '~~/shared/types/funda-shared'
+import type { Thumbnail } from '~~/shared/types/shared'
 
 type Props = {
   heroImage: Required<Thumbnail>

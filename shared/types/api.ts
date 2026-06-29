@@ -1,9 +1,8 @@
-import type { ListingDetail } from './funda-detail'
-import type { Listing } from './funda-listing'
-import type { Paging } from './funda-shared'
+import type { Paging } from './shared'
+import type { RawListing, RawListingDetail } from './upstream'
 
 export type ListingCard = Pick<
-  Listing,
+  RawListing,
   | 'Id'
   | 'Adres'
   | 'Woonplaats'
@@ -26,8 +25,8 @@ export interface ListingsResponse {
   total: number
 }
 
-export type ListingDetailResponse = Pick<
-  ListingDetail,
+export type ListingDetail = Pick<
+  RawListingDetail,
   | 'Id'
   | 'Adres'
   | 'Plaats'

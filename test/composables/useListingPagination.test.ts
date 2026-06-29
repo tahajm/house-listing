@@ -1,7 +1,7 @@
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { describe, expect, it, vi } from 'vitest'
 
-import { useListingPagination } from '../../app/composables/useListingsPagitation.ts'
+import { useListingPagination } from '../../app/composables/useListingPagination.ts'
 
 const { query, navigateToMock } = vi.hoisted(() => ({
   query: {} as Record<string, string | string[] | undefined>,

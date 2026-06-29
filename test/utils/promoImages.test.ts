@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { getPromoImages } from '~/utils/promoImages'
-import type { PromoLabel } from '~~/shared/types/funda-listing'
+import type { PromoLabel } from '~~/shared/types/upstream'
 
 function makePromoLabel(photos: string[]): PromoLabel {
   return {

@@ -1,5 +1,5 @@
 import { secureImageUrl } from '~/utils/configs'
-import type { PromoLabel } from '~~/shared/types/funda-listing'
+import type { PromoLabel } from '~~/shared/types/upstream'
 
 const MAX_PROMO_IMAGES = 2
 

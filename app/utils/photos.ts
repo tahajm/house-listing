@@ -1,5 +1,5 @@
 import { secureImageUrl } from '~/utils/configs'
-import { type Media, MediaKind, PhotoSize, type Thumbnail } from '~~/shared/types/funda-shared'
+import { type Media, MediaKind, PhotoSize, type Thumbnail } from '~~/shared/types/shared'
 
 const PHOTO_LIMIT = 5
 

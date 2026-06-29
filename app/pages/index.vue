@@ -2,7 +2,7 @@
 import AppLoading from '~/components/common/AppLoading.vue'
 import HouseCard from '~/components/HouseCard.vue'
 import ListingPagination from '~/components/ListingPagination.vue'
-import { useListingPagination } from '~/composables/useListingsPagitation'
+import { useListingPagination } from '~/composables/useListingPagination'
 
 const { currentPage, goNext, goPrev } = useListingPagination()
 
@@ -37,7 +37,7 @@ const listingCount = computed(() => {
       </ol>
       <ListingPagination
         :current-page="currentPage"
-        :total-page="data.paging.AantalPaginas"
+        :total-pages="data.paging.AantalPaginas"
         @next="goNext"
         @prev="goPrev"
       />
