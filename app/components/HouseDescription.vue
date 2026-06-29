@@ -15,7 +15,7 @@ const expanded = ref(false)
     </div>
     <button
       type="button"
-      class="mt-2 py-2 text-sm text-secondary-70-darken-1 hover:underline cursor-pointer"
+      class="mt-2 py-2 text-sm text-secondary-darken hover:underline cursor-pointer"
       @click="expanded = !expanded"
     >
       {{ expanded ? 'Show less' : 'Read the full description' }}

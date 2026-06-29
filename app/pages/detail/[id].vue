@@ -27,7 +27,7 @@ const photos = computed(() => extractPhotos(data.value?.Media))
 
     <section class="flex flex-col gap-2 border-t mt-4 border-neutral-200 py-6">
       <h1 class="text-2xl font-medium">{{ data.Adres }}</h1>
-      <p class="text-neutral-400">{{ data.Postcode }} {{ data.Plaats }}</p>
+      <p class="text-neutral-600">{{ data.Postcode }} {{ data.Plaats }}</p>
       <PriceTag :price="data.Koopprijs" class="text-lg" />
       <HouseOverview
         variant="extended"

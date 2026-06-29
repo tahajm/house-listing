@@ -1,10 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
 
+const DEFAULT_BASE_URL = 'https://partnerapi.funda.nl/feeds/Aanbod.svc/json'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/image'],
+
+  image: {
+    domains: ['cloud.funda.nl'],
+  },
 
   components: [{ path: '~/components', pathPrefix: false }],
 
@@ -14,7 +20,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    baseURL: '',
+    baseURL: DEFAULT_BASE_URL,
     apiKey: '',
   },
 
