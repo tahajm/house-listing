@@ -4,7 +4,7 @@ import type { Thumbnail } from '~~/shared/types/funda-shared'
 type Props = {
   heroImage: Required<Thumbnail>
   address: string
-  images?: Thumbnail[]
+  images?: string[]
   eager?: boolean
 }
 
@@ -26,9 +26,9 @@ withDefaults(defineProps<Props>(), { eager: false })
       </div>
 
       <template v-if="images?.length">
-        <div v-for="(image, i) in images" :key="image.small" class="thumbnail__photo">
+        <div v-for="(image, i) in images" :key="image" class="thumbnail__photo">
           <NuxtImg
-            :src="image.medium ?? image.small"
+            :src="image"
             :alt="`Photo ${i + 1} of ${address}`"
             class="size-full object-cover"
             loading="lazy"

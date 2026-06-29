@@ -7,5 +7,5 @@ export function getPromoImages(promoLabel: PromoLabel | undefined | null) {
 
   const photos = promoLabel.PromotionPhotos.slice(0, MAX_PROMO_IMAGES)
 
-  return photos.map((small) => ({ small }))
+  return photos
 }
