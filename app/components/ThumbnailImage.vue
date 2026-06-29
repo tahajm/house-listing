@@ -3,8 +3,8 @@ import type { Thumbnail } from '~~/shared/types/funda-shared'
 
 type Props = {
   heroImage: Required<Thumbnail>
-  images?: Thumbnail[]
   address: string
+  images?: Thumbnail[]
   eager?: boolean
 }
 

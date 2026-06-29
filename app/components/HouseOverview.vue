@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 import EnergyLabelIcon from '~/components/icons/EnergyLabelIcon.vue'
 import LivingAreaIcon from '~/components/icons/LivingAreaIcon.vue'
 import PlotSizeIcon from '~/components/icons/PlotSizeIcon.vue'
@@ -11,42 +13,46 @@ type Props = {
   rooms: number
   energyLabel?: string
 }
-withDefaults(defineProps<Props>(), { variant: 'normal' })
+type OverviewItem = {
+  icon: Component
+  value: string | number | undefined
+  name: string
+}
+
+const props = withDefaults(defineProps<Props>(), { variant: 'normal' })
+
+const data: OverviewItem[] = [
+  {
+    icon: LivingAreaIcon,
+    value: `${props.livingArea} m²`,
+    name: 'living area',
+  },
+  {
+    icon: PlotSizeIcon,
+    value: `${props.plotArea} m²`,
+    name: 'plot size',
+  },
+  {
+    icon: RoomsIcon,
+    value: props.rooms,
+    name: 'rooms',
+  },
+  {
+    icon: EnergyLabelIcon,
+    value: props.energyLabel,
+    name: 'energy label',
+  },
+]
 </script>
 
 <template>
-  <ul class="overview">
-    <li class="overview__item">
-      <LivingAreaIcon /> <span class="overview__value">{{ livingArea }} m²</span>
-      <span v-if="variant === 'extended'">living area</span>
-    </li>
-    <li class="overview__item">
-      <PlotSizeIcon /> <span class="overview__value">{{ plotArea }} m²</span>
-      <span v-if="variant === 'extended'">plot size</span>
-    </li>
-    <li class="overview__item">
-      <RoomsIcon /> <span class="overview__value">{{ rooms }}</span>
-      <span v-if="variant === 'extended'">rooms</span>
-    </li>
-    <li v-if="energyLabel" class="overview__item">
-      <EnergyLabelIcon /> <span class="overview__value">{{ energyLabel }}</span>
-      <span v-if="variant === 'extended'">energy label</span>
-    </li>
+  <ul class="flex flex-nowrap gap-3 gap-y-2 py-1 text-neutral-600">
+    <template v-for="houseInfo in data" :key="houseInfo.name">
+      <li v-if="houseInfo.value !== undefined" class="flex items-center gap-1 whitespace-nowrap">
+        <component :is="houseInfo.icon" />
+        <span class="text-neutral-900">{{ houseInfo.value }}</span>
+        <span v-if="variant === 'extended'">{{ houseInfo.name }}</span>
+      </li>
+    </template>
   </ul>
 </template>
-
-<style scoped>
-@reference "tailwindcss";
-
-.overview {
-  @apply flex flex-nowrap gap-3 gap-y-2 py-1 text-neutral-600;
-}
-
-.overview__item {
-  @apply flex items-center gap-1 whitespace-nowrap;
-}
-
-.overview__value {
-  @apply text-neutral-900;
-}
-</style>

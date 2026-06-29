@@ -26,7 +26,7 @@ const heroImage = computed(() => ({
     class="flex flex-col border-b border-neutral-200"
     :class="hasPromotion ? 'border rounded-md' : 'xs:flex-row pb-6'"
   >
-    <div class="max-w-4xl w-full" :class="hasPromotion ? '' : 'xs:w-58'">
+    <div class="max-w-4xl w-full" :class="{ 'xs:w-58': !hasPromotion }">
       <ThumbnailImage
         :hero-image="heroImage"
         :images="promoImages"
@@ -34,7 +34,7 @@ const heroImage = computed(() => ({
         :eager="eager"
       />
     </div>
-    <div class="flex flex-col gap-2 xs:p-4" :class="hasPromotion ? 'p-4' : ''">
+    <div class="flex flex-col gap-2 xs:p-4" :class="{ 'p-4': hasPromotion }">
       <h3>
         <NuxtLink :href="`/detail/${house.Id}`" class="block">
           <div class="font-semibold truncate">{{ house.Adres }}</div>

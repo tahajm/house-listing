@@ -1,5 +1,6 @@
 <script setup lang="ts">
-defineProps<{ price: number | null }>()
+type Props = { price: number | null }
+defineProps<Props>()
 </script>
 
 <template>

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-const props = defineProps<{ lat: number; lng: number; address: string }>()
+type Props = { lat: number; lng: number; address: string }
+const props = defineProps<Props>()
 
-const src = computed(
-  () => `https://maps.google.com/maps?q=${props.lat},${props.lng}&z=15&output=embed`,
-)
+const src = computed(() => generatGoogleMapUrl(props.lat, props.lng))
 </script>
 
 <template>
