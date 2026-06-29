@@ -20,6 +20,7 @@ function makeHouse(overrides: Partial<ListingCard> = {}): ListingCard {
     FotoLarge: 'http://cloud.funda.nl/a-large.jpg',
     FotoLargest: 'http://cloud.funda.nl/a-largest.jpg',
     PromoLabel: makePromoLabel(),
+    MakelaarNaam: 'Test Makelaars',
     ...overrides,
   }
 }

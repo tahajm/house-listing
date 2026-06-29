@@ -12,6 +12,7 @@ function toListingCard({
   FotoLarge,
   FotoLargest,
   PromoLabel,
+  MakelaarNaam,
 }: Listing): ListingCard {
   return {
     Id,
@@ -27,6 +28,7 @@ function toListingCard({
     FotoLarge,
     FotoLargest,
     PromoLabel,
+    MakelaarNaam,
   }
 }
 

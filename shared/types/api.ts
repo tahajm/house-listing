@@ -17,6 +17,7 @@ export type ListingCard = Pick<
   | 'FotoLarge'
   | 'FotoLargest'
   | 'PromoLabel'
+  | 'MakelaarNaam'
 >
 
 export interface ListingsResponse {

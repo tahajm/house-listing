@@ -48,6 +48,7 @@ const heroImage = computed(() => ({
         :plot-area="house.Perceeloppervlakte"
         :living-area="house.Woonoppervlakte"
       />
+      <p class="text-sm text-neutral-600 truncate">{{ house.MakelaarNaam }}</p>
     </div>
   </li>
 </template>
