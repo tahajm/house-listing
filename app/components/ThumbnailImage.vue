@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import type { Thumbnail } from '~~/shared/types/shared'
+import type { Thumbnail } from '~~/shared/types/shared';
 
 type Props = {
-  heroImage: Required<Thumbnail>
-  address: string
-  images?: string[]
-  eager?: boolean
-}
+  heroImage: Required<Thumbnail>;
+  address: string;
+  images?: string[];
+  eager?: boolean;
+};
 
-withDefaults(defineProps<Props>(), { eager: false })
+withDefaults(defineProps<Props>(), { eager: false });
 </script>
 
 <template>
   <div class="@container">
     <section class="thumbnail">
       <div class="thumbnail__hero">
-        <img
+        <NuxtImg
           :src="heroImage.large"
           :srcset="`${heroImage.medium} 600w, ${heroImage.large} 1080w, ${heroImage.largest} 1440w`"
           sizes="(max-width: 670px) 100vw, (max-width: 900px) 67vw, 600px"

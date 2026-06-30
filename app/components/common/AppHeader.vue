@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HomeIcon from '~/components/icons/HomeIcon.vue'
+import HomeIcon from '~/components/icons/HomeIcon.vue';
 </script>
 
 <template>

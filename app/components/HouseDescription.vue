@@ -1,13 +1,14 @@
 <script setup lang="ts">
-defineProps<{ text: string }>()
+defineProps<{ text: string }>();
 
-const expanded = ref(false)
+const expanded = ref(false);
 </script>
 
 <template>
   <section class="mt-6">
     <h2 class="mb-4 text-xl font-semibold lg:text-2xl">Description</h2>
     <div
+      id="house-description"
       class="whitespace-pre-wrap text-neutral-600"
       :class="!expanded && 'max-h-40 overflow-hidden'"
     >
@@ -16,6 +17,8 @@ const expanded = ref(false)
     <button
       type="button"
       class="mt-2 py-2 text-sm text-secondary-darken hover:underline cursor-pointer"
+      :aria-expanded="expanded"
+      aria-controls="house-description"
       @click="expanded = !expanded"
     >
       {{ expanded ? 'Show less' : 'Read the full description' }}

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
-const DEFAULT_BASE_URL = 'https://partnerapi.funda.nl/feeds/Aanbod.svc/json'
+const DEFAULT_BASE_URL = 'https://partnerapi.funda.nl/feeds/Aanbod.svc/json';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -28,7 +28,9 @@ export default defineNuxtConfig({
     head: {
       title: 'House Listings',
       htmlAttrs: { lang: 'en' },
-      meta: [{ name: 'description', content: 'Browse house listings for sale' }],
+      meta: [
+        { name: 'description', content: 'Browse house listings for sale' },
+      ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
@@ -37,4 +39,4 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: false,
   },
-})
+});

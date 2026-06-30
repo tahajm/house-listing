@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import HouseDescription from '~/components/HouseDescription.vue'
-import HouseOverview from '~/components/HouseOverview.vue'
-import LocationMap from '~/components/LocationMap.vue'
-import PriceTag from '~/components/PriceTag.vue'
-import ThumbnailImage from '~/components/ThumbnailImage.vue'
-import { extractPhotos } from '~/utils/photos'
+import HouseDescription from '~/components/HouseDescription.vue';
+import HouseOverview from '~/components/HouseOverview.vue';
+import LocationMap from '~/components/LocationMap.vue';
+import PriceTag from '~/components/PriceTag.vue';
+import ThumbnailImage from '~/components/ThumbnailImage.vue';
+import { extractPhotos } from '~/utils/photos';
 
-const route = useRoute()
-const id = route.params.id
+const route = useRoute();
+const id = route.params.id;
 
-const { data, pending, error } = await useFetch(`/api/listingDetail/${id}`)
+const { data, pending, error } = await useFetch(`/api/listingDetail/${id}`);
 
-const photos = computed(() => extractPhotos(data.value?.Media))
+const photos = computed(() => extractPhotos(data.value?.Media));
 </script>
 <template>
   <AppLoading v-if="pending" />
-  <AppErrorMessage v-if="error" />
-  <p v-else-if="!data">No data to show</p>
+  <AppErrorMessage v-else-if="error" :message="error.statusMessage" />
+  <p v-else-if="!data" role="status">No data to show</p>
   <div v-else>
     <ThumbnailImage
       v-if="photos.heroImage"
       :hero-image="photos.heroImage"
       :images="photos.thumbnailImages"
       :address="data.Adres"
+      eager
     />
 
     <section class="flex flex-col gap-2 border-t mt-4 border-neutral-200 py-6">
@@ -38,7 +39,10 @@ const photos = computed(() => extractPhotos(data.value?.Media))
       />
     </section>
 
-    <HouseDescription v-if="data.VolledigeOmschrijving" :text="data.VolledigeOmschrijving" />
+    <HouseDescription
+      v-if="data.VolledigeOmschrijving"
+      :text="data.VolledigeOmschrijving"
+    />
 
     <LocationMap
       v-if="data.WGS84_Y && data.WGS84_X"

@@ -1,9 +1,12 @@
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
-import eslintConfigPrettier from 'eslint-config-prettier'
-import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import pluginVue from 'eslint-plugin-vue'
-import vueA11y from 'eslint-plugin-vuejs-accessibility'
-import globals from 'globals'
+import {
+  defineConfigWithVueTs,
+  vueTsConfigs,
+} from '@vue/eslint-config-typescript';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import pluginVue from 'eslint-plugin-vue';
+import vueA11y from 'eslint-plugin-vuejs-accessibility';
+import globals from 'globals';
 
 export default defineConfigWithVueTs(
   { ignores: ['.nuxt/**', '.output/**', 'dist/**'] },
@@ -30,4 +33,4 @@ export default defineConfigWithVueTs(
     },
   },
   eslintConfigPrettier,
-)
+);

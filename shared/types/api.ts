@@ -1,5 +1,5 @@
-import type { Paging } from './shared'
-import type { RawListing, RawListingDetail } from './upstream'
+import type { Paging } from './shared';
+import type { RawListing, RawListingDetail } from './upstream';
 
 export type ListingCard = Pick<
   RawListing,
@@ -17,12 +17,12 @@ export type ListingCard = Pick<
   | 'FotoLargest'
   | 'PromoLabel'
   | 'MakelaarNaam'
->
+>;
 
 export interface ListingsResponse {
-  listings: ListingCard[]
-  paging: Paging
-  total: number
+  listings: ListingCard[];
+  paging: Paging;
+  total: number;
 }
 
 export type ListingDetail = Pick<
@@ -41,4 +41,4 @@ export type ListingDetail = Pick<
   | 'WGS84_X'
   | 'WGS84_Y'
   | 'Media'
->
+>;
