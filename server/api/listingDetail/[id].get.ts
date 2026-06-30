@@ -1,14 +1,14 @@
-import { transformDetailResponse } from '~~/server/utils/transformers'
-import type { ListingDetail } from '~~/shared/types/api'
-import type { RawListingDetail } from '~~/shared/types/upstream'
+import { transformDetailResponse } from '~~/server/utils/transformers';
+import type { ListingDetail } from '~~/shared/types/api';
+import type { RawListingDetail } from '~~/shared/types/upstream';
 
 export default defineEventHandler(async (event): Promise<ListingDetail> => {
-  const id = getRouterParam(event, 'id')
-  const { baseURL, apiKey } = useRuntimeConfig(event)
+  const id = getRouterParam(event, 'id');
+  const { baseURL, apiKey } = useRuntimeConfig(event);
 
-  const url = `${baseURL}/detail/${apiKey}/koop/${id}/`
+  const url = `${baseURL}/detail/${apiKey}/koop/${id}/`;
 
-  const detail = await $fetch<RawListingDetail>(url)
+  const detail = await upstreamFetch<RawListingDetail>(url);
 
-  return transformDetailResponse(detail)
-})
+  return transformDetailResponse(detail);
+});

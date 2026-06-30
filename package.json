@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
@@ -35,6 +36,8 @@
     "globals": "^17.7.0",
     "happy-dom": "^20.10.6",
     "prettier": "^3.3.3",
-    "vitest": "^4.1.9"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9",
+    "vue-tsc": "^3.3.5"
   }
 }

@@ -29,18 +29,22 @@ function toListingCard({
     FotoLargest,
     PromoLabel,
     MakelaarNaam,
-  }
+  };
 }
 
-export function transformListingsResponse(data: RawListingsResponse): ListingsResponse {
+export function transformListingsResponse(
+  data: RawListingsResponse,
+): ListingsResponse {
   return {
     listings: data.Objects.map(toListingCard),
     paging: data.Paging,
     total: data.TotaalAantalObjecten,
-  }
+  };
 }
 
-export function transformDetailResponse(detail: RawListingDetail): ListingDetail {
+export function transformDetailResponse(
+  detail: RawListingDetail,
+): ListingDetail {
   return {
     Id: detail.Id,
     Adres: detail.Adres,
@@ -56,5 +60,5 @@ export function transformDetailResponse(detail: RawListingDetail): ListingDetail
     WGS84_X: detail.WGS84_X,
     WGS84_Y: detail.WGS84_Y,
     Media: detail.Media,
-  }
+  };
 }
