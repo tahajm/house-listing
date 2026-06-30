@@ -24,6 +24,11 @@ export default defineNuxtConfig({
     apiKey: '',
   },
 
+  routeRules: {
+    '/': { swr: 60 },
+    '/detail/**': { swr: 3600 },
+  },
+
   app: {
     head: {
       title: 'House Listings',
