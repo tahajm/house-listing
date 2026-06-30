@@ -12,6 +12,16 @@ const id = route.params.id;
 const { data, pending, error } = await useFetch(`/api/listingDetail/${id}`);
 
 const photos = computed(() => extractPhotos(data.value?.Media));
+
+useSeoMeta({
+  title: () => `Listing at ${data.value?.Adres ?? ''}`,
+  description: () =>
+    `Check the details of the listing at ${data.value?.Adres ?? ''}.`,
+  ogTitle: () => `Listing at ${data.value?.Adres ?? ''}`,
+  ogDescription: () =>
+    `Check the details of the listing at ${data.value?.Adres ?? ''}.`,
+  ogImage: () => photos.value.heroImage?.large,
+});
 </script>
 <template>
   <AppLoading v-if="pending" />
