@@ -1,4 +1,4 @@
-import { secureImageUrl } from '~/utils/configs';
+import { secureImageUrl } from '~/utils/urls';
 import type { PromoLabel } from '~~/shared/types/upstream';
 
 const MAX_PROMO_IMAGES = 2;

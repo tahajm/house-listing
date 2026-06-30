@@ -2,12 +2,13 @@ export function useListingPagination() {
   const route = useRoute();
 
   const currentPage = computed(() => {
-    let page = route.query.page;
+    const raw = Array.isArray(route.query.page)
+      ? route.query.page[0]
+      : route.query.page;
 
-    if (Array.isArray(page)) page = page[0];
-    if (!page || isNaN(Number(page))) page = '1';
+    if (!raw || isNaN(Number(raw))) return 1;
 
-    return Math.max(1, Number(page));
+    return Math.max(1, Number(raw));
   });
 
   const navigateToNewPage = (pageNum: number) => {

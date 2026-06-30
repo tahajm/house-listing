@@ -1,4 +1,4 @@
-export function generatGoogleMapUrl(
+export function generateGoogleMapUrl(
   lat: number | string,
   lng: number | string,
 ) {

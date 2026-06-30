@@ -1,4 +1,4 @@
-import { secureImageUrl } from '~/utils/configs';
+import { secureImageUrl } from '~/utils/urls';
 import {
   type Media,
   MediaKind,

@@ -2,7 +2,7 @@
 import HouseOverview from '~/components/HouseOverview.vue';
 import PriceTag from '~/components/PriceTag.vue';
 import ThumbnailImage from '~/components/ThumbnailImage.vue';
-import { secureImageUrl } from '~/utils/configs';
+import { secureImageUrl } from '~/utils/urls';
 import type { ListingCard } from '~~/shared/types/api';
 
 type Props = { house: ListingCard; eager?: boolean };

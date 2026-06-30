@@ -13,7 +13,7 @@ withDefaults(defineProps<Props>(), { eager: false });
 
 <template>
   <div class="@container">
-    <section class="thumbnail">
+    <div class="thumbnail">
       <div class="thumbnail__hero">
         <NuxtImg
           :src="heroImage.large"
@@ -24,6 +24,7 @@ withDefaults(defineProps<Props>(), { eager: false });
           height="480"
           class="size-full object-cover hover-zoom"
           :loading="eager ? 'eager' : 'lazy'"
+          :fetchpriority="eager ? 'high' : 'auto'"
         />
       </div>
 
@@ -37,7 +38,7 @@ withDefaults(defineProps<Props>(), { eager: false });
           />
         </div>
       </template>
-    </section>
+    </div>
   </div>
 </template>
 

@@ -20,13 +20,13 @@ const listingCount = computed(() => {
 
 <template>
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-lg font-medium text-neutral-900 my-4">
-      {{ listingCount }} Homes for sale
-    </h1>
     <AppLoading v-if="pending" />
     <AppErrorMessage v-else-if="error" />
     <p v-else-if="!data?.listings.length" role="status">Nothing to show</p>
     <div v-else>
+      <h1 class="text-lg font-medium text-neutral-900 my-4">
+        {{ listingCount }} Homes for sale
+      </h1>
       <ol class="flex flex-col gap-6">
         <HouseCard
           v-for="(house, i) in data.listings"

@@ -2,7 +2,7 @@
 type Props = { lat: number; lng: number; address: string };
 const props = defineProps<Props>();
 
-const src = computed(() => generatGoogleMapUrl(props.lat, props.lng));
+const src = computed(() => generateGoogleMapUrl(props.lat, props.lng));
 </script>
 
 <template>
