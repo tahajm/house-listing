@@ -24,18 +24,6 @@ export default defineNuxtConfig({
     apiKey: '',
   },
 
-  routeRules: {
-    '/detail/**': { swr: 3600 },
-  },
-
-  experimental: {
-    defaults: {
-      nuxtLink: {
-        prefetch: false,
-      },
-    },
-  },
-
   app: {
     head: {
       title: 'House Listings',

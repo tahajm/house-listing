@@ -16,12 +16,9 @@ withDefaults(defineProps<Props>(), { eager: false });
     <div class="thumbnail">
       <div class="thumbnail__hero">
         <NuxtImg
-          :src="heroImage.large"
-          :srcset="`${heroImage.medium} 600w, ${heroImage.large} 1080w, ${heroImage.largest} 1440w`"
-          sizes="(max-width: 670px) 100vw, (max-width: 900px) 67vw, 600px"
+          :src="heroImage.medium"
+          :srcset="`${heroImage.medium} 1x, ${heroImage.large} 2x`"
           :alt="`Hero photo of ${address}`"
-          width="720"
-          height="480"
           class="size-full object-cover hover-zoom"
           :loading="eager ? 'eager' : 'lazy'"
           :fetchpriority="eager ? 'high' : 'auto'"
