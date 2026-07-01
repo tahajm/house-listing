@@ -2,9 +2,11 @@
 const route = useRoute();
 const id = route.params.id;
 
-const { data, pending, error } = await useFetch(`/api/listingDetail/${id}`);
+const { data, pending, error } = await useFetch(`/api/listings/${id}`);
 
-const { headPhoto, extraGalleryPhotos, photos } = useMedia(data.value?.Media);
+const { headPhoto, extraGalleryPhotos, photos } = extractPhotos(
+  data.value?.Media,
+);
 
 const isGalleryOpen = ref(false);
 
@@ -15,7 +17,7 @@ useSeoMeta({
   ogTitle: () => `Listing at ${data.value?.Adres ?? ''}`,
   ogDescription: () =>
     `Check the details of the listing at ${data.value?.Adres ?? ''}.`,
-  ogImage: () => headPhoto.value?.large,
+  ogImage: () => headPhoto?.large,
 });
 </script>
 <template>
