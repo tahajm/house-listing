@@ -84,7 +84,7 @@ app/
 server/
 ├─ api/
 │  ├─ listings.get.ts               # GET /api/listings
-│  └─ listingDetail/[id].get.ts     # GET /api/listingDetail/:id
+│  └─ listings/[id].get.ts          # GET /api/listings/:id
 └─ utils/
    ├─ transformers.ts               # upstream → client shape
    └─ upstreamFetch.ts              # 404 / 502 error mapping
@@ -120,3 +120,5 @@ test/                               # Vitest specs (components, composables, uti
 - **Normalize photos on the server.** Today `HouseCard` and the detail page each build a `Thumbnail` shape from different upstream fields (`Foto*` vs `Media[]`). Move both adapters into `server/utils/transformers.ts` so the client receives one canonical `Thumbnail` per card and a `Thumbnail[]` gallery per detail — single source, smaller payload, no `secureImageUrl` shipped to the browser.
 - **Richer responsive images.** `PhotoGrid` currently uses `1x`/`2x` density descriptors. Move to width descriptors + `sizes` and generate WebP/AVIF via `@nuxt/image` IPX provider.
 - **Static site generation.** The dataset is bounded and low-churn — prerender popular detail pages at build time via `routeRules: { '/detail/**': { prerender: true } }` fed by `nitro.hooks['prerender:routes']`, keep `/` on SWR. Cuts cold-start latency and lets the site deploy to any static host, with the proxy running on-demand for the long tail.
+- **Validate `/detail/[id]` param.** UUID guard via `definePageMeta({ validate })` — 404 fast instead of round-tripping upstream on stale IDs.
+- **Validate `page` on the listings proxy.** Coerce + clamp `query.page` in `server/api/listings.get.ts` so junk input doesn't burn upstream quota.
