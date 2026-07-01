@@ -6,7 +6,7 @@ export function useListingPagination() {
       ? route.query.page[0]
       : route.query.page;
 
-    if (!raw || isNaN(Number(raw))) return 1;
+    if (!raw || Number.isNaN(Number(raw))) return 1;
 
     return Math.max(1, Number(raw));
   });

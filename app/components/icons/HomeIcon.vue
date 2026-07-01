@@ -4,7 +4,6 @@
     width="24"
     height="24"
     fill="currentColor"
-    role="presentation"
     viewBox="0 0 48 48"
     aria-hidden="true"
   >

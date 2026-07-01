@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { secureImageUrl } from '~/utils/urls';
-import type { ListingCard } from '~~/shared/types/api';
-
 type Props = { house: ListingCard; eager?: boolean };
 
 const props = withDefaults(defineProps<Props>(), {
