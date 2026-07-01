@@ -122,3 +122,4 @@ test/                               # Vitest specs (components, composables, uti
 - **Static site generation.** The dataset is bounded and low-churn — prerender popular detail pages at build time via `routeRules: { '/detail/**': { prerender: true } }` fed by `nitro.hooks['prerender:routes']`, keep `/` on SWR. Cuts cold-start latency and lets the site deploy to any static host, with the proxy running on-demand for the long tail.
 - **Validate `/detail/[id]` param.** UUID guard via `definePageMeta({ validate })` — 404 fast instead of round-tripping upstream on stale IDs.
 - **Validate `page` on the listings proxy.** Coerce + clamp `query.page` in `server/api/listings.get.ts` so junk input doesn't burn upstream quota.
+- **Test the transformers.** `server/utils/transformers.ts` is the vendor drift boundary — lock the projection with a small spec so accidental field leaks fail loud.
