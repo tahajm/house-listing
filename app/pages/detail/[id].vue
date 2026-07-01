@@ -25,6 +25,9 @@ useSeoMeta({
   <AppErrorMessage v-else-if="error" :message="error.statusMessage" />
   <p v-else-if="!data" role="status">No data to show</p>
   <div v-else>
+    <NuxtLink to="/" class="btn-text inline-block mb-2">
+      ← Back to listings
+    </NuxtLink>
     <PhotoGrid
       v-if="headPhoto"
       :head-photo="headPhoto"
@@ -35,9 +38,10 @@ useSeoMeta({
 
     <button
       v-if="photos.length"
-      class="btn-text mt-2 border border-secondary"
+      class="btn-text mt-2 flex items-center gap-2"
       @click="isGalleryOpen = true"
     >
+      <PhotosIcon />
       All photos
     </button>
 
