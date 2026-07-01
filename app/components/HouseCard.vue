@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import PhotoGrid from '~/components/common/PhotoGrid.vue';
+import PriceTag from '~/components/common/PriceTag.vue';
 import HouseOverview from '~/components/HouseOverview.vue';
-import PriceTag from '~/components/PriceTag.vue';
-import ThumbnailImage from '~/components/ThumbnailImage.vue';
 import { secureImageUrl } from '~/utils/urls';
 import type { ListingCard } from '~~/shared/types/api';
 
@@ -16,14 +16,12 @@ const hasPromotion = computed(() => promoImages.value.length > 0);
 
 const heroImage = computed(() => ({
   large: secureImageUrl(props.house.FotoLarge),
-  small: secureImageUrl(props.house.Foto),
   medium: secureImageUrl(props.house.FotoMedium),
-  largest: secureImageUrl(props.house.FotoLargest),
 }));
 </script>
 
 <template>
-  <li
+  <div
     class="flex flex-col border-neutral-200 border rounded-md"
     :class="{ 'xs:flex-row': !hasPromotion }"
   >
@@ -32,9 +30,9 @@ const heroImage = computed(() => ({
       class="max-w-4xl w-full"
       :class="{ 'xs:w-58': !hasPromotion }"
     >
-      <ThumbnailImage
-        :hero-image="heroImage"
-        :images="promoImages"
+      <PhotoGrid
+        :head-photo="heroImage"
+        :extra-photos="promoImages"
         :address="house.Adres"
         :eager="eager"
       />
@@ -56,5 +54,5 @@ const heroImage = computed(() => ({
       />
       <p class="text-sm text-neutral-600 truncate">{{ house.MakelaarNaam }}</p>
     </div>
-  </li>
+  </div>
 </template>

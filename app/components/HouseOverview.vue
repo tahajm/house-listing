@@ -22,7 +22,7 @@ type OverviewItem = {
 
 const props = withDefaults(defineProps<Props>(), { variant: 'normal' });
 
-const data: OverviewItem[] = [
+const items = computed<OverviewItem[]>(() => [
   {
     icon: LivingAreaIcon,
     value: props.livingArea,
@@ -45,12 +45,12 @@ const data: OverviewItem[] = [
     value: props.energyLabel,
     name: 'energy label',
   },
-];
+]);
 </script>
 
 <template>
-  <ul class="flex flex-wrap gap-3 gap-y-2 py-1 text-neutral-600">
-    <template v-for="houseInfo in data" :key="houseInfo.name">
+  <ul class="flex flex-wrap gap-3 gap-y-2 py-1 text-neutral-500">
+    <template v-for="houseInfo in items" :key="houseInfo.name">
       <li
         v-if="houseInfo.value"
         class="flex items-center gap-1 whitespace-nowrap"
@@ -59,7 +59,7 @@ const data: OverviewItem[] = [
         <component :is="houseInfo.icon" />
         <span class="text-neutral-900">
           <span>{{ houseInfo.value }}</span>
-          <span v-if="houseInfo.unit">
+          <span v-if="houseInfo.unit" class="ml-1">
             {{ houseInfo.unit?.sign }}
           </span>
         </span>

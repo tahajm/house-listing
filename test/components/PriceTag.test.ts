@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 
-import PriceTag from '../../app/components/PriceTag.vue';
+import PriceTag from '../../app/components/common/PriceTag.vue';
 
 describe('PriceTag', () => {
   it('formats the price with the k.k. suffix', async () => {

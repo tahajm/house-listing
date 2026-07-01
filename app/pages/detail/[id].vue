@@ -1,17 +1,19 @@
 <script setup lang="ts">
+import LocationMap from '~/components/common/LocationMap.vue';
+import PhotoGrid from '~/components/common/PhotoGrid.vue';
+import PriceTag from '~/components/common/PriceTag.vue';
 import HouseDescription from '~/components/HouseDescription.vue';
 import HouseOverview from '~/components/HouseOverview.vue';
-import LocationMap from '~/components/LocationMap.vue';
-import PriceTag from '~/components/PriceTag.vue';
-import ThumbnailImage from '~/components/ThumbnailImage.vue';
-import { extractPhotos } from '~/utils/photos';
+import PhotoGallery from '~/components/PhotoGallery.vue';
 
 const route = useRoute();
 const id = route.params.id;
 
 const { data, pending, error } = await useFetch(`/api/listingDetail/${id}`);
 
-const photos = computed(() => extractPhotos(data.value?.Media));
+const { headPhoto, extraGalleryPhotos, photos } = useMedia(data.value?.Media);
+
+const isGalleryOpen = ref(false);
 
 useSeoMeta({
   title: () => `Listing at ${data.value?.Adres ?? ''}`,
@@ -20,7 +22,7 @@ useSeoMeta({
   ogTitle: () => `Listing at ${data.value?.Adres ?? ''}`,
   ogDescription: () =>
     `Check the details of the listing at ${data.value?.Adres ?? ''}.`,
-  ogImage: () => photos.value.heroImage?.large,
+  ogImage: () => headPhoto.value?.large,
 });
 </script>
 <template>
@@ -28,13 +30,20 @@ useSeoMeta({
   <AppErrorMessage v-else-if="error" :message="error.statusMessage" />
   <p v-else-if="!data" role="status">No data to show</p>
   <div v-else>
-    <ThumbnailImage
-      v-if="photos.heroImage"
-      :hero-image="photos.heroImage"
-      :images="photos.thumbnailImages"
+    <PhotoGrid
+      v-if="headPhoto"
+      :head-photo="headPhoto"
+      :extra-photos="extraGalleryPhotos.map((m) => m.medium)"
       :address="data.Adres"
       eager
     />
+
+    <button
+      class="btn-text mt-2 border border-secondary"
+      @click="isGalleryOpen = true"
+    >
+      All photos
+    </button>
 
     <section class="flex flex-col gap-2 border-t mt-4 border-neutral-200 py-6">
       <h1 class="text-2xl font-medium">{{ data.Adres }}</h1>
@@ -59,6 +68,12 @@ useSeoMeta({
       :lat="data.WGS84_Y"
       :lng="data.WGS84_X"
       :address="data.Adres"
+    />
+
+    <PhotoGallery
+      v-if="isGalleryOpen"
+      v-model="isGalleryOpen"
+      :photos="photos"
     />
   </div>
 </template>

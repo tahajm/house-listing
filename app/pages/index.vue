@@ -28,12 +28,9 @@ const listingCount = computed(() => {
         {{ listingCount }} Homes for sale
       </h1>
       <ol class="flex flex-col gap-6">
-        <HouseCard
-          v-for="(house, i) in data.listings"
-          :key="house.Id"
-          :house="house"
-          :eager="i < 3"
-        />
+        <li v-for="(house, i) in data.listings" :key="house.Id">
+          <HouseCard :house="house" :eager="i < 3" />
+        </li>
       </ol>
       <ListingPagination
         :current-page="currentPage"
