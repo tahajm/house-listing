@@ -32,6 +32,7 @@ useSeoMeta({
     />
 
     <button
+      v-if="photos.length"
       class="btn-text mt-2 border border-secondary"
       @click="isGalleryOpen = true"
     >
@@ -63,10 +64,6 @@ useSeoMeta({
       :address="data.Adres"
     />
 
-    <PhotoGallery
-      v-if="isGalleryOpen"
-      v-model="isGalleryOpen"
-      :photos="photos"
-    />
+    <PhotoGallery v-model="isGalleryOpen" :photos="photos" />
   </div>
 </template>

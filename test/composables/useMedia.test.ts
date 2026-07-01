@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { useMedia } from '~/composables/useMedia';
-import { type Media, MediaKind, PhotoSize } from '~~/shared/types/shared';
+import { useMedia } from '../../app/composables/useMedia';
+import {
+  type Media,
+  MediaItem,
+  MediaKind,
+  PhotoSize,
+} from '../../shared/types/shared';
 
 function makeMedia(
   id: string,
@@ -13,8 +18,8 @@ function makeMedia(
     MediaItems: sizes.map((size) => ({
       Category: size,
       Url: `http://cdn.example.com/${id}-${size}.jpg`,
-    })),
-  };
+    })) as unknown as MediaItem[],
+  } as Media;
 }
 
 const ALL_SIZES = [
@@ -65,7 +70,9 @@ describe('useMedia', () => {
       makeMedia(id, MediaKind.Photos, ALL_SIZES),
     );
     const { extraGalleryPhotos } = useMedia(items);
-    expect(extraGalleryPhotos.value.map((p) => p.large)).toEqual([
+    expect(
+      extraGalleryPhotos.value.map((p: { large: string }) => p.large),
+    ).toEqual([
       'https://cdn.example.com/b-6.jpg',
       'https://cdn.example.com/c-6.jpg',
       'https://cdn.example.com/d-6.jpg',
