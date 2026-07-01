@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import LocationMap from '~/components/common/LocationMap.vue';
-import PhotoGrid from '~/components/common/PhotoGrid.vue';
-import PriceTag from '~/components/common/PriceTag.vue';
-import HouseDescription from '~/components/HouseDescription.vue';
-import HouseOverview from '~/components/HouseOverview.vue';
-import PhotoGallery from '~/components/PhotoGallery.vue';
-
 const route = useRoute();
 const id = route.params.id;
 

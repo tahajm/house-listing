@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import HomeIcon from '~/components/icons/HomeIcon.vue';
-</script>
-
 <template>
   <header class="bg-primary h-15 flex items-center justify-around">
     <nav class="container h-full px-4 py-2">

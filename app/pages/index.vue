@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import AppLoading from '~/components/common/AppLoading.vue';
-import HouseCard from '~/components/HouseCard.vue';
-import ListingPagination from '~/components/ListingPagination.vue';
 import { useListingPagination } from '~/composables/useListingPagination';
 
 const { currentPage, goNext, goPrev } = useListingPagination();

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import PhotoGrid from '~/components/common/PhotoGrid.vue';
-import PriceTag from '~/components/common/PriceTag.vue';
-import HouseOverview from '~/components/HouseOverview.vue';
 import { secureImageUrl } from '~/utils/urls';
 import type { ListingCard } from '~~/shared/types/api';
 

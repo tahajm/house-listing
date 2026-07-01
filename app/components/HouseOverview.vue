@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 
-import EnergyLabelIcon from '~/components/icons/EnergyLabelIcon.vue';
-import LivingAreaIcon from '~/components/icons/LivingAreaIcon.vue';
-import PlotSizeIcon from '~/components/icons/PlotSizeIcon.vue';
-import RoomsIcon from '~/components/icons/RoomsIcon.vue';
+import {
+  EnergyLabelIcon,
+  LivingAreaIcon,
+  PlotSizeIcon,
+  RoomsIcon,
+} from '#components';
 
 type Props = {
   variant?: 'normal' | 'extended';
